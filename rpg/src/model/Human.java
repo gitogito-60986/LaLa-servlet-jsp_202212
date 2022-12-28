@@ -15,7 +15,7 @@ public abstract class Human {
 	
 	public abstract String attack(Monster monster);
 	public abstract void escape();
-	public abstract void dead();
+	public abstract String dead();
 	public abstract void command(Monster monster);
 	public abstract void command(List<Monster> monsterList);
 
@@ -29,7 +29,11 @@ public abstract class Human {
 		return this.hp;
 	}
 	public void setHp(int hp) {
-		this.hp = hp;
+		if(hp > 0) {
+			this.hp = hp;
+		} else {
+			this.hp = 0;
+		}
 	}
 	public boolean isCToF() {
 		return this.CToF;

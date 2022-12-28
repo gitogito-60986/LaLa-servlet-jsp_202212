@@ -34,7 +34,10 @@ public class Hero extends Human {
 			text += monster.getMonsterType() + "に" + damage + "ポイントのダメージをあたえた！";
 			int damaged = monster.getHp() - damage;
 			monster.setHp(damaged);
-			monster.dead(this);
+			String doa = monster.dead(this);
+			if(doa != null) {
+				text += doa;
+			}
 		}
 		return text;
 	}
@@ -54,15 +57,17 @@ public class Hero extends Human {
 	}
 	
 	@Override
-	public void dead() {
+	public String dead() {
+		String text = null;
 		boolean alive = true;
 		if(this.getHp() <= 0) {
-			System.out.println(this.getName() + "は力尽きた…\n");
+			text = this.getName() + "は力尽きた…";
 //			Calc.doWait(1000);
 //			System.out.println("== <GAME OVER> ==");
 			alive = false;
 		}
 		this.setCToF(alive);
+		return text;
 	}
 
 	@Override

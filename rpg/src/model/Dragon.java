@@ -34,7 +34,10 @@ public class Dragon extends Monster {
 			text += human.getName() + "は" + damage + "ポイントのダメージをうけた！";
 			int damaged = human.getHp() - damage;
 			human.setHp(damaged);
-			human.dead();
+			String doa = human.dead();
+			if(doa != null) {
+				text += doa;
+			}
 		}
 		return text;
 	}
@@ -54,13 +57,15 @@ public class Dragon extends Monster {
 	}
 	
 	@Override
-	public void dead(Human human) {
+	public String dead(Human human) {
+		String text = null;
 		boolean alive = true;
 		if(this.getHp() <= 0) {
-			System.out.println(human.getName() + "は、" + this.getMonsterType() + "を打ち倒した！");
+			text = human.getName() + "は、" + this.getMonsterType() + "を打ち倒した！";
 			alive = false;
 		}
 		this.setCToF(alive);
+		return text;
 	}
 	
 	@Override
