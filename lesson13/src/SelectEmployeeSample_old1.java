@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class SelectEmployeeSample {
+public class SelectEmployeeSample_old1 {
   public static void main(String[] args) {
     // データベースに接続
     try (Connection conn =
